@@ -2,91 +2,114 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* PRD Colors */
+    --background: 220 17% 96%; /* #F3F4F6 */
+    --foreground: 0 0% 20%; /* #333333 (primaryText) */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%; /* #FFFFFF (surface) */
+    --card-foreground: 0 0% 20%; /* #333333 (primaryText on card) */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%; /* #FFFFFF (surface) */
+    --popover-foreground: 0 0% 20%; /* #333333 (primaryText on popover) */
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 245 83% 67%; /* #7367F0 (accentPurple) */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF (text on primary) */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 14% 90%; /* #E5E7EB (border color, for light secondary bg) */
+    --secondary-foreground: 0 0% 20%; /* #333333 (primaryText on secondary bg) */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 17% 96%; /* #F3F4F6 (same as background, for less emphasis) */
+    --muted-foreground: 220 8% 48%; /* #6B7280 (secondaryText) */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 245 83% 67%; /* #7367F0 (accentPurple, same as primary for focus rings etc.) */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF (text on accent) */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 79% 51%; /* #E02424 (accentRed) */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF (text on destructive) */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 14% 90%; /* #E5E7EB */
+    --input: 220 14% 90%; /* #E5E7EB (border for input, input bg is card) */
+    --ring: 245 83% 67%; /* #7367F0 (accentPurple, for focus rings) */
 
-    --radius: 0.5rem;
+    --radius: 0.5rem; /* Corresponds to rounded-lg from PRD */
 
-    --sidebar-background: 0 0% 98%;
+    /* Additional PRD Colors */
+    --accent-green: 147 65% 43%; /* #23B76C */
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Sidebar specific theme vars (for components within the sidebar) */
+    /* Sidebar itself will have bg-sidebar which uses --sidebar-background-actual */
+    --sidebar-background-actual: 245 83% 67%; /* #7367F0 (PRD colorPalette.sidebar) */
+    --sidebar-foreground-actual: 0 0% 100%; /* #FFFFFF (Text on sidebar background) */
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Theme for Shadcn components within the sidebar */
+    --sidebar-background: 245 83% 67%; /* #7367F0 (Actual Sidebar Background) */
+    --sidebar-foreground: 0 0% 100%;   /* #FFFFFF (Default text on Sidebar Background) */
+    
+    /* Primary actions (e.g. button) ON the sidebar */
+    --sidebar-primary: 0 0% 100%; /* White background for a button on purple sidebar */
+    --sidebar-primary-foreground: 245 83% 67%; /* Purple text for that button */
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    /* Accent (e.g. hover states) ON the sidebar */
+    --sidebar-accent: 220 17% 96%; /* Light gray (main page background) for hover background */
+    --sidebar-accent-foreground: 245 83% 67%; /* Purple text for hover state */
 
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-border: 246 57% 57%; /* Darker purple #5E54D0 for borders within sidebar */
+    --sidebar-ring: 0 0% 100%; /* White focus ring for elements on purple sidebar */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 215 28% 17%; /* #1F2937 (Dark Gray) */
+    --foreground: 220 14% 90%; /* #E5E7EB (Light Gray) */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 215 19% 27%; /* #374151 (Slightly Lighter Dark Gray) */
+    --card-foreground: 220 14% 90%; /* #E5E7EB */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 215 19% 27%; /* #374151 */
+    --popover-foreground: 220 14% 90%; /* #E5E7EB */
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 245 83% 67%; /* #7367F0 (Keep vibrant) */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 215 14% 34%; /* #4B5563 (Darker Gray) */
+    --secondary-foreground: 216 12% 84%; /* #D1D5DB (Lighter Gray for contrast) */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 215 14% 34%; /* #4B5563 */
+    --muted-foreground: 215 8% 65%; /* #9CA3AF (Mid Gray) */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 245 83% 67%; /* #7367F0 (Keep vibrant) */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 79% 51%; /* #E02424 (Keep vibrant, or slightly adjust for dark if needed) */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF */
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 215 19% 27%; /* #374151 (Visible border on dark) */
+    --input: 215 19% 27%; /* #374151 */
+    --ring: 245 83% 67%; /* #7367F0 (Keep vibrant) */
+
+    /* Additional PRD Colors - Dark Mode (assuming accentGreen remains vibrant) */
+    --accent-green: 147 65% 43%; /* #23B76C */
+
+    /* Sidebar specific theme vars (Dark Mode) */
+    /* Assuming sidebar color #7367F0 and its component theme persist in dark mode */
+    --sidebar-background-actual: 245 83% 67%; /* #7367F0 */
+    --sidebar-foreground-actual: 0 0% 100%; /* #FFFFFF */
+
+    --sidebar-background: 245 83% 67%; 
+    --sidebar-foreground: 0 0% 100%; 
+    
+    --sidebar-primary: 0 0% 100%; 
+    --sidebar-primary-foreground: 245 83% 67%; 
+
+    --sidebar-accent: 220 17% 96%; 
+    --sidebar-accent-foreground: 245 83% 67%; 
+
+    --sidebar-border: 246 57% 57%;
+    --sidebar-ring: 0 0% 100%; 
   }
 }
 
@@ -97,5 +120,8 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif; /* Apply primaryFont from PRD */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
