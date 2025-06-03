@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -52,22 +53,31 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+        // Updated sidebar colors to use the actual sidebar background and foreground
+        // The CSS vars --sidebar-background and --sidebar-foreground now point to the actual sidebar colors
 				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
+					DEFAULT: 'hsl(var(--sidebar-background))', // Uses --sidebar-background for the actual sidebar background color
+					foreground: 'hsl(var(--sidebar-foreground))', // Uses --sidebar-foreground for text on the sidebar
+          // These are for components *within* the sidebar, themed appropriately
 					primary: 'hsl(var(--sidebar-primary))',
 					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
 					accent: 'hsl(var(--sidebar-accent))',
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        // Added accentGreen from PRD
+        accentGreen: 'hsl(var(--accent-green))',
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+        // PRD: default: rounded-lg, buttons: rounded-md. --radius is 0.5rem (lg)
+				lg: 'var(--radius)', // 0.5rem
+				md: 'calc(var(--radius) - 2px)', // 0.5rem - 2px = 0.375rem
+				sm: 'calc(var(--radius) - 4px)' // 0.5rem - 4px = 0.25rem
 			},
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
